@@ -14,15 +14,13 @@ RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     /py/bin/pip install -r /tmp/requirements.txt && \
     if [ $DEV = "true" ]; \
-      then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
+        then /py/bin/pip install -r /tmp/requirements.dev.txt ; \
     fi && \
     rm -rf /tmp && \
     adduser \
         --disabled-password \
         --no-create-home \
-        django-user && \
-    chown -R django-user  /app && \
-    chmod 755 /app
+        django-user
 
 
 ENV PATH="/py/bin:$PATH"
